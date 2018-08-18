@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Alert, Button } from 'react-bootstrap'
+import styled, { css } from 'styled-components'
+
+const StyledButton = styled.button`
+  margin: 2px;
+  border-radius: 3px;
+  padding: 0.25em 1em;
+  background: transparent;
+  color: palevioletred;
+  border: 2px solid palevioletred;
+
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
+`;
 
 export default class Page2 extends Component {
 
@@ -29,7 +44,9 @@ export default class Page2 extends Component {
         <h3> Bem vindo!</h3>
         <div className="row">
           <div className="col-md-4 col-md-offset-4">
-            <Link to='/'>Page2Page2Page2Page2Page2Page2Page2</Link>
+            <Link to='/'>Page2Page2Page2Page2Page2Page2Page2</Link><br/>
+            <StyledButton primary>StyledButton primary props</StyledButton><br/>
+            <StyledButton>StyledButton</StyledButton><br/>
             <Button onClick={this.handleShow}>Show Alert</Button>
             {this.state.show && (
               <Alert bsStyle="danger" onDismiss={this.handleDismiss}>
@@ -39,6 +56,7 @@ export default class Page2 extends Component {
                   luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
                   Cras mattis consectetur purus sit amet fermentum.
                 </p>
+
                 <p>
                   <Button bsStyle="danger">Take this action</Button>
                   <span> or </span>
